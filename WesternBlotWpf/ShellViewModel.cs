@@ -1,29 +1,49 @@
 using System.Windows;
+using Caliburn.Micro;
 
 namespace WesternBlotWpf {
-    public class ShellViewModel : Caliburn.Micro.PropertyChangedBase, IShell
+    
+//    public class ShellViewModel : Caliburn.Micro.PropertyChangedBase, IShell
+//    {
+//        string name;
+//
+//        public string Name
+//        {
+//            get { return name; }
+//            set
+//            {
+//                name = value;
+//                NotifyOfPropertyChange(() => Name);
+//                NotifyOfPropertyChange(() => CanSayHello);
+//            }
+//        }
+//
+//        public bool CanSayHello
+//        {
+//            get { return !string.IsNullOrWhiteSpace(Name); }
+//        }
+//
+//        public void SayHello()
+//        {
+//            MessageBox.Show(string.Format("Hello {0}!", Name)); //Don't do this in real life :)
+//        }
+//    }
+
+    public class ShellViewModel : Conductor<object>, IShell
     {
-        string name;
-
-        public string Name
+        public ShellViewModel()
         {
-            get { return name; }
-            set
-            {
-                name = value;
-                NotifyOfPropertyChange(() => Name);
-                NotifyOfPropertyChange(() => CanSayHello);
-            }
+            ShowPageOne();   
         }
 
-        public bool CanSayHello
+        public void ShowPageOne()
         {
-            get { return !string.IsNullOrWhiteSpace(Name); }
+            ActivateItem(new PageOneViewModel());
         }
 
-        public void SayHello()
+        public void ShowPageTwo()
         {
-            MessageBox.Show(string.Format("Hello {0}!", Name)); //Don't do this in real life :)
+            ActivateItem(new PageTwoViewModel());
         }
     }
 }

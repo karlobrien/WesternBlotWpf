@@ -22,10 +22,17 @@
             </Button>
         </controls:WindowCommands>
     </controls:MetroWindow.RightWindowCommands>
-    <StackPanel>
-        <TextBox x:Name="Name" />
-        <Button x:Name="SayHello"
-                Content="Click Me" />
-    </StackPanel>
+    <DockPanel>
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    DockPanel.Dock="Top">
+            <Button x:Name="ShowPageOne"
+                    Content="Show Page One" />
+            <Button x:Name="ShowPageTwo"
+                    Content="Show Page Two" />
+        </StackPanel>
+
+        <ContentControl x:Name="ActiveItem" />
+    </DockPanel>
 
 </controls:MetroWindow>

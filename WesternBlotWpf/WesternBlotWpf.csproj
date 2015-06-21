@@ -67,11 +67,27 @@
     </ApplicationDefinition>
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="IShell.cs" />
+    <Compile Include="PageOneView.xaml.cs">
+      <DependentUpon>PageOneView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageOneViewModel.cs" />
+    <Compile Include="PageTwoView.xaml.cs">
+      <DependentUpon>PageTwoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageTwoViewModel.cs" />
     <Compile Include="ShellViewModel.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PageOneView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageTwoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Icons.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
