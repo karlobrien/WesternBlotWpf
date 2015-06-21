@@ -33,17 +33,22 @@ namespace WesternBlotWpf {
     {
         public ShellViewModel()
         {
-            ShowPageOne();   
+            ShowMainPage();
         }
 
-        public void ShowPageOne()
+        public void ShowMainPage()
         {
-            ActivateItem(new PageOneViewModel());
+            ActivateItem(new WesternBlotViewModel());
         }
 
-        public void ShowPageTwo()
-        {
-            ActivateItem(new PageTwoViewModel());
-        }
+//    public void ShowPageOne()
+//        {
+//            ActivateItem(new PageOneViewModel());
+//        }
+//
+//        public void ShowPageTwo()
+//        {
+//            ActivateItem(new PageTwoViewModel());
+//        }
     }
 }
