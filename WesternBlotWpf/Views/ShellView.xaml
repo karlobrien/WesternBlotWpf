@@ -1,4 +1,4 @@
-<controls:MetroWindow x:Class="WesternBlotWpf.ShellView"
+<controls:MetroWindow x:Class="WesternBlotWpf.Views.ShellView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
@@ -23,15 +23,6 @@
         </controls:WindowCommands>
     </controls:MetroWindow.RightWindowCommands>
     <DockPanel>
-        <StackPanel Orientation="Horizontal"
-                    HorizontalAlignment="Center"
-                    DockPanel.Dock="Top">
-            <Button x:Name="ShowPageOne"
-                    Content="Show Page One" />
-            <Button x:Name="ShowPageTwo"
-                    Content="Show Page Two" />
-        </StackPanel>
-
         <ContentControl x:Name="ActiveItem" />
     </DockPanel>
 

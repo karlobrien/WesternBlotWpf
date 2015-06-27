@@ -68,42 +68,28 @@
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="BlotParts.cs" />
     <Compile Include="IShell.cs" />
-    <Compile Include="PageOneView.xaml.cs">
-      <DependentUpon>PageOneView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PageOneViewModel.cs" />
-    <Compile Include="PageTwoView.xaml.cs">
-      <DependentUpon>PageTwoView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PageTwoViewModel.cs" />
-    <Compile Include="ShellViewModel.cs" />
+    <Compile Include="Model\CalculateModel.cs" />
+    <Compile Include="SeparationGelCalculation.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="WesternBlotView.xaml.cs">
+    <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="Views\WesternBlotView.xaml.cs">
       <DependentUpon>WesternBlotView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WesternBlotViewModel.cs" />
-    <Page Include="PageOneView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="PageTwoView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <Compile Include="ViewModels\WesternBlotViewModel.cs" />
     <Page Include="Resources\Icons.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ShellView.xaml">
+    <Page Include="Views\ShellView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="WesternBlotView.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Views\WesternBlotView.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -125,6 +111,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\BlotParts.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

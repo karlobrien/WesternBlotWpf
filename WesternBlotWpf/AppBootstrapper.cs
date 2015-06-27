@@ -1,3 +1,6 @@
+using WesternBlotWpf.Model;
+using WesternBlotWpf.ViewModels;
+
 namespace WesternBlotWpf {
     using System;
     using System.Collections.Generic;
@@ -16,6 +19,8 @@ namespace WesternBlotWpf {
             container.Singleton<IWindowManager, WindowManager>();
             container.Singleton<IEventAggregator, EventAggregator>();
             container.PerRequest<IShell, ShellViewModel>();
+            //container.Singleton<CalculateModel>();
+            //container.Singleton<WesternBlotViewModel>();
         }
 
         protected override object GetInstance(Type service, string key) {

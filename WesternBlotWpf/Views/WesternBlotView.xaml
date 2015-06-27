@@ -1,0 +1,105 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             x:Class="WesternBlotWpf.Views.WesternBlotView" 
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="600"
+             Loaded="UserControl_Loaded">
+
+    <DockPanel LastChildFill="True">
+        <Grid DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="40"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Content="Gel Number: "/>
+            <TextBox x:Name="NumberOfGels" Grid.Row="0" Grid.Column="1"/>
+            <Label Grid.Row="0" Grid.Column="2" Content="Gel %: "/>
+            <TextBox x:Name="GelPercentage" Grid.Row="0" Grid.Column="3"/>
+            <Label Grid.Row="0" Grid.Column="4" Content="Arcylamide: "/>
+            <TextBox Grid.Row="0" Grid.Column="5" x:Name="Arcylamide"/>
+        </Grid>
+        <Button DockPanel.Dock="Bottom" HorizontalAlignment="Right" x:Name="Calculate" Content="Calculate" Height="6"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="80"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.ColumnSpan="2" Content="Stacking Gel"></Label>
+            <Label Grid.Row="1" Grid.Column="0" Content="SDS:"></Label>
+            <TextBox Grid.Row="1" Grid.Column="1" IsReadOnly="True" x:Name="StackingGel_Sds"/>
+
+            <Label Grid.Row="2" Grid.Column="0" Content="DH20:"></Label>
+            <TextBox Grid.Row="2" Grid.Column="1" IsReadOnly="True" x:Name="StackingGel_Dh20"/>
+
+            <Label Grid.Row="3" Grid.Column="0" Content="Acrylamide:"></Label>
+            <TextBox Grid.Row="3" Grid.Column="1" IsReadOnly="True" x:Name="StackingGel_Acrylamide"/>
+
+            <Label Grid.Row="4" Grid.Column="0" Content="Tris2:"></Label>
+            <TextBox Grid.Row="4" Grid.Column="1" IsReadOnly="True" x:Name="StackingGel_Tris2"/>
+
+            <Label Grid.Row="5" Grid.Column="0" Content="Tris1:"></Label>
+            <TextBox Grid.Row="5" Grid.Column="1" IsReadOnly="True" x:Name="StackingGel_Tris1"/>
+
+            <Label Grid.Row="6" Grid.Column="0" Content="Aps:"></Label>
+            <TextBox Grid.Row="6" Grid.Column="1" IsReadOnly="True" x:Name="StackingGel_Aps"/>
+
+            <Label Grid.Row="7" Grid.Column="0" Content="Temd:"></Label>
+            <TextBox Grid.Row="7" Grid.Column="1" IsReadOnly="True" x:Name="StackingGel_Temd"/>
+
+            <Label Grid.Row="8" Grid.Column="0" Content="Total Volume:"></Label>
+            <TextBox Grid.Row="8" Grid.Column="1" IsReadOnly="True" x:Name="StackingGel_TotalVolume"/>
+
+            <Label Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Content="Separation Gel"></Label>
+            <Label Grid.Row="1" Grid.Column="2" Content="SDS:"></Label>
+            <TextBox Grid.Row="1" Grid.Column="3" IsReadOnly="True" x:Name="SeparationGel_Sds"/>
+
+            <Label Grid.Row="2" Grid.Column="2" Content="DH20:"></Label>
+            <TextBox Grid.Row="2" Grid.Column="3" IsReadOnly="True" x:Name="SeparationGel_Dh20"/>
+
+            <Label Grid.Row="3" Grid.Column="2" Content="Acrylamide:"></Label>
+            <TextBox Grid.Row="3" Grid.Column="3" IsReadOnly="True" x:Name="SeparationGel_Acrylamide"/>
+
+            <Label Grid.Row="4" Grid.Column="2" Content="Tris2:"></Label>
+            <TextBox Grid.Row="4" Grid.Column="3" IsReadOnly="True" x:Name="SeparationGel_Tris2"/>
+
+            <Label Grid.Row="5" Grid.Column="2" Content="Tris1:"></Label>
+            <TextBox Grid.Row="5" Grid.Column="3" IsReadOnly="True" x:Name="SeparationGel_Tris1"/>
+
+            <Label Grid.Row="6" Grid.Column="2" Content="Aps:"></Label>
+            <TextBox Grid.Row="6" Grid.Column="3" IsReadOnly="True" x:Name="SeparationGel_Aps"/>
+
+            <Label Grid.Row="7" Grid.Column="2" Content="Temd:"></Label>
+            <TextBox Grid.Row="7" Grid.Column="3" IsReadOnly="True" x:Name="SeparationGel_Temd"/>
+
+            <Label Grid.Row="8" Grid.Column="2" Content="Total Volume:"></Label>
+            <TextBox Grid.Row="8" Grid.Column="3" IsReadOnly="True" x:Name="SeparationGel_TotalVolume"/>
+            
+        </Grid>
+    </DockPanel>
+</UserControl>
