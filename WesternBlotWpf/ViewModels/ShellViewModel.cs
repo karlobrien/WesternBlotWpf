@@ -12,7 +12,7 @@ namespace WesternBlotWpf.ViewModels
 
         public void ShowMainPage()
         {
-            ActivateItem(new WesternBlotViewModel(new CalculateModel()));
+            ActivateItem(new WesternBlotViewModel());
         }
     }
 }

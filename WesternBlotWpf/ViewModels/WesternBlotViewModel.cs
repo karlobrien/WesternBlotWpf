@@ -6,12 +6,6 @@ namespace WesternBlotWpf.ViewModels
 {
     public class WesternBlotViewModel : Screen
     {
-        public CalculateModel CalculateTheModel { get; private set; }
-        public WesternBlotViewModel(CalculateModel calculateModel)
-        {
-            CalculateTheModel = calculateModel;
-        }
-
         private int _numberOfGelsInput;
         public int NumberOfGelsInput
         {
@@ -21,7 +15,7 @@ namespace WesternBlotWpf.ViewModels
                 if (_numberOfGelsInput == value)
                     return;
                 _numberOfGelsInput = value;
-                NotifyOfPropertyChange(() => CanCalculate);
+            
                 NotifyOfPropertyChange("Dh20Separation");
                 NotifyOfPropertyChange("AcrylamideSeparation");
                 NotifyOfPropertyChange("Tris1Separation");
@@ -29,6 +23,14 @@ namespace WesternBlotWpf.ViewModels
                 NotifyOfPropertyChange("ApsSeparation");
                 NotifyOfPropertyChange("TemdSeparation");
                 NotifyOfPropertyChange("TotalVolumeSeparation");
+
+                NotifyOfPropertyChange("Dh20Stacking");
+                NotifyOfPropertyChange("AcrylamideStacking");
+                NotifyOfPropertyChange("TrisStacking");
+                NotifyOfPropertyChange("SdsStacking");
+                NotifyOfPropertyChange("ApsStacking");
+                NotifyOfPropertyChange("TemdStacking");
+                NotifyOfPropertyChange("TotalVolumeStacking");
             }
         }
 
@@ -41,7 +43,6 @@ namespace WesternBlotWpf.ViewModels
                 if (_gelPercentageInput == value)
                     return;
                 _gelPercentageInput = value;
-                NotifyOfPropertyChange(() => CanCalculate);
                 NotifyOfPropertyChange("Dh20Separation");
                 NotifyOfPropertyChange("AcrylamideSeparation");
                 NotifyOfPropertyChange("Tris1Separation");
@@ -49,6 +50,14 @@ namespace WesternBlotWpf.ViewModels
                 NotifyOfPropertyChange("ApsSeparation");
                 NotifyOfPropertyChange("TemdSeparation");
                 NotifyOfPropertyChange("TotalVolumeSeparation");
+
+                NotifyOfPropertyChange("Dh20Stacking");
+                NotifyOfPropertyChange("AcrylamideStacking");
+                NotifyOfPropertyChange("TrisStacking");
+                NotifyOfPropertyChange("SdsStacking");
+                NotifyOfPropertyChange("ApsStacking");
+                NotifyOfPropertyChange("TemdStacking");
+                NotifyOfPropertyChange("TotalVolumeStacking");
             }
         }
 
@@ -70,6 +79,14 @@ namespace WesternBlotWpf.ViewModels
                 NotifyOfPropertyChange("ApsSeparation");
                 NotifyOfPropertyChange("TemdSeparation");
                 NotifyOfPropertyChange("TotalVolumeSeparation");
+
+                NotifyOfPropertyChange("Dh20Stacking");
+                NotifyOfPropertyChange("AcrylamideStacking");
+                NotifyOfPropertyChange("TrisStacking");
+                NotifyOfPropertyChange("SdsStacking");
+                NotifyOfPropertyChange("ApsStacking");
+                NotifyOfPropertyChange("TemdStacking");
+                NotifyOfPropertyChange("TotalVolumeStacking");
             }
         }
 
@@ -228,50 +245,138 @@ namespace WesternBlotWpf.ViewModels
 
 
 
-
-
-
-
-
-
-
-        public void Calculate()
-        {
-            SeparationGel = CalculateTheModel.CreateBlotParts(NumberOfGelsInput, GelPercentageInput, PercentArcylamideInput);
-        }
-
-        public bool CanCalculate
+        private double _dH20Stacking;
+        public double Dh20Stacking
         {
             get
             {
-                return _numberOfGelsInput > 0 && (_gelPercentageInput > 0 && _gelPercentageInput < 22);
-            }           
-        }
-
-
-
-        private BlotParts _separationGel;
-        public BlotParts SeparationGel
-        {
-            get { return _separationGel; }
+                _dH20Stacking = (2.76 * _numberOfGelsInput) - AcrylamideStacking;
+                return _dH20Stacking;
+            }
             set
             {
-                if (_separationGel == value)
+                if (Math.Abs(_dH20Stacking - value) < 0)
                     return;
-                _separationGel = value;
                 NotifyOfPropertyChange();
             }
         }
 
-        private BlotParts _stackingGel;
-        public BlotParts StackingGel
+        private double CalculateAcryLamideForStacking()
         {
-            get { return _stackingGel; }
+            double result;
+
+            if (Math.Abs(_percentArcylamideInput - 40) < 0)
+            {
+                result = 0.36 * _numberOfGelsInput;
+            }
+            else
+            {
+                var temp = 0.36 * _numberOfGelsInput;
+                var temp2 = (temp / 100) * 33.3;
+                result = temp + temp2;
+            }
+
+            return result;
+        }
+
+        private double _acrylamideStacking;
+        public double AcrylamideStacking
+        {
+            get
+            {
+                _acrylamideStacking = CalculateAcryLamideForStacking();
+                return _acrylamideStacking;
+            }
             set
             {
-                if (_stackingGel == value)
+                if (Math.Abs(_acrylamideStacking - value) < 0)
                     return;
-                _stackingGel = value;
+                _acrylamideStacking = value;
+                NotifyOfPropertyChange();
+            }
+        }
+
+        private double _trisStacking;
+        public double TrisStacking
+        {
+            get
+            {
+                _trisStacking = 0.9 * _numberOfGelsInput;
+                return _trisStacking;
+            }
+            set
+            {
+                if (Math.Abs(_tris2 - value) < 0)
+                    return;
+                _tris2 = value;
+                NotifyOfPropertyChange();
+            }
+        }
+
+        private double _sdsStacking;
+        public double SdsStacking
+        {
+            get
+            {
+                _sdsStacking = 36 * _numberOfGelsInput;
+                return _sdsStacking;
+            }
+            set
+            {
+                if (Math.Abs(_sdsStacking - value) < 0)
+                    return;
+                _sdsStacking = value;
+                NotifyOfPropertyChange();
+            }
+        }
+
+        private double _apsStacking;
+        public double ApsStacking
+        {
+            get
+            {
+                _apsStacking = 18 * _numberOfGelsInput;
+                return _apsStacking;
+            }
+            set
+            {
+                if (Math.Abs(_apsStacking - value) < 0)
+                    return;
+                _apsStacking = value;
+                NotifyOfPropertyChange();
+            }
+        }
+
+        private double _temedStacking;
+        public double TemdStacking
+        {
+            get
+            {
+                _temedStacking = 3.6 * _numberOfGelsInput;
+                return _temedStacking;
+            }
+            set
+            {
+                if (Math.Abs(_temedStacking - value) < 0)
+                    return;
+                _temedStacking = value;
+                NotifyOfPropertyChange();
+            }
+        }
+
+        private double _totalVolumeStacking;
+        public double TotalVolumeStacking
+        {
+            get
+            {
+                _totalVolumeStacking = _dH20Stacking + _acrylamideStacking + _trisStacking + (0.0576 * _numberOfGelsInput);
+                return _totalVolumeStacking;
+            }
+            set
+            {
+                if (Math.Abs(_totalVolumeStacking - value) < 0)
+                    return;
+                _totalVolumeStacking = value;
                 NotifyOfPropertyChange();
             }
         }
