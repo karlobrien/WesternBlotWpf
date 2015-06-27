@@ -68,6 +68,7 @@
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="BlotParts.cs" />
     <Compile Include="IShell.cs" />
+    <Compile Include="Model\AbstractGelCalculation.cs" />
     <Compile Include="Model\CalculateModel.cs" />
     <Compile Include="SeparationGelCalculation.cs" />
     <Compile Include="App.xaml.cs">

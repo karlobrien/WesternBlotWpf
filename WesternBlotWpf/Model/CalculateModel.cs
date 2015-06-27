@@ -27,8 +27,6 @@ namespace WesternBlotWpf.Model
         private double CalculateAcryLamide(double numGel, double percentGel, double percentArcy)
         {
             double result;
-            double temp;
-            double temp2;
 
             if (Math.Abs(percentArcy - 40) < 0)
             {
@@ -36,53 +34,47 @@ namespace WesternBlotWpf.Model
             }
             else
             {
-                temp = (0.25 * percentGel) * numGel;
-                temp2 = (temp / 100) * 33.3;
+                var temp = (0.25 * percentGel) * numGel;
+                var temp2 = (temp / 100) * 33.3;
                 result = temp + temp2;
             }
 
             return result;
         }
 
-        private double CalculateDdH20(Double numGel)
+        private double CalculateDdH20(double numGel)
         {
             var result = (7.35*numGel) - _blotParts.Acrylamide;
             return result;
         }
 
-        private double CalculateTris1(Double numGel)
+        private double CalculateTris1(double numGel)
         {
             var result = 2.5 * numGel;
             return result;
         }
 
-        private double CalculateTris2(Double numGel)
-        {
-            var result = 0.0;
-            return result;
-        }
-
-        private double CalculateSds(Double numGel)
+        private double CalculateSds(double numGel)
         {
             var result = 100 * numGel;
             return result;
         }
 
-        private double CalculateAps(Double numGel)
+        private double CalculateAps(double numGel)
         {
-            double result = 50 * numGel;
+            var result = 50 * numGel;
             return result;
         }
 
-        private double CalculateTemd(Double numGel)
+        private double CalculateTemd(double numGel)
         {
-            double result = 5 * numGel;
+            var result = 5 * numGel;
             return result;
         }
 
-        private double CalculateTotalVolume(Double numGel)
+        private double CalculateTotalVolume(double numGel)
         {
-            double result = _blotParts.Dh20 + _blotParts.Acrylamide + _blotParts.Tris1 + (0.155 * numGel);
+            var result = _blotParts.Dh20 + _blotParts.Acrylamide + _blotParts.Tris1 + (0.155 * numGel);
             return result;
         }
 
