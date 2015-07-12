@@ -6,6 +6,10 @@ namespace WesternBlotWpf.ViewModels
 {
     public class WesternBlotViewModel : Screen
     {
+        public WesternBlotViewModel()
+        {
+        }
+
         private int _numberOfGelsInput;
         public int NumberOfGelsInput
         {
