@@ -13,7 +13,8 @@ namespace WesternBlotWpf.ViewModels
         public void ShowMainPage()
         {
             var wb = new WesternBlotViewModel {DisplayName = "Western Blot"};
-            ActivateItem(wb);
+            var cv = new CardViewModel { DisplayName = "Western Blot" };
+            ActivateItem(cv);
         }
     }
 }

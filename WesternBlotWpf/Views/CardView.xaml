@@ -1,0 +1,87 @@
+﻿<UserControl x:Class="WesternBlotWpf.Views.CardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="400">
+    <DockPanel LastChildFill="True">
+        <Grid DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="40"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Content="Gel Number: "/>
+            <TextBox x:Name="GelNumber" Grid.Row="0" Grid.Column="1"/>
+            <Label Grid.Row="0" Grid.Column="2" Content="Gel %: "/>
+            <TextBox x:Name="GelPercent" Grid.Row="0" Grid.Column="3"/>
+            <Label Grid.Row="0" Grid.Column="4" Content="Arcylamide: "/>
+            <ComboBox x:Name="ArcyPercentItems" Grid.Row="0" Grid.Column="5" SelectedItem="{Binding SelectedArcyPercent}"/>
+
+        </Grid>
+        <Button x:Name="CalculateWesternBlot" Content="Submit" DockPanel.Dock="Bottom" Width="50" HorizontalAlignment="Right"></Button>
+        <ListBox Style="{StaticResource MaterialDesignCardsListBox}" x:Name="BlotResults">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate >
+                    <Grid Height="300">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="140" /> 
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" Background="{DynamicResource PrimaryHueLightBrush}" 
+                                TextBlock.Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+                                CornerRadius="2 0 0 2"
+                                Padding="8">
+                            <TextBlock Text="{Binding GelName}" FontWeight="Bold" />
+                        </Border>
+                        <Grid Grid.Column="1" Margin="8">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="140" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Content="Dh20:"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1"  Text="{Binding Dh20}" FontWeight="Bold" />
+                            <Label Grid.Row="1" Grid.Column="0" Content="Acry:"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Acrylamide}" />
+                            <Label Grid.Row="2" Grid.Column="0" Content="Tris1:"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Tris}" />
+                            <Label Grid.Row="3" Grid.Column="0" Content="Sds:"/>
+                            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Sds}" />
+                            <Label Grid.Row="4" Grid.Column="0" Content="Aps:"/>
+                            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Aps}" />
+                            <Label Grid.Row="5" Grid.Column="0" Content="Temd: "/>
+                            <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding Temd}" />
+                            <Label Grid.Row="6" Grid.Column="0" Content="Total Volume: "/>
+                            <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding TotalVolume}" />
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ListBox>
+       
+    </DockPanel>
+
+</UserControl>

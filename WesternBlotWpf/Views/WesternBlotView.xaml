@@ -27,7 +27,7 @@
             <Label Grid.Row="0" Grid.Column="2" Content="Gel %: "/>
             <TextBox x:Name="GelPercentageInput" Grid.Row="0" Grid.Column="3"/>
             <Label Grid.Row="0" Grid.Column="4" Content="Arcylamide: "/>
-            <TextBox Grid.Row="0" Grid.Column="5" x:Name="ArcylamideInput"/>
+            <TextBox x:Name="PercentArcylamideInput" Grid.Row="0" Grid.Column="5" />
         </Grid>
         <Grid>
             <Grid.RowDefinitions>

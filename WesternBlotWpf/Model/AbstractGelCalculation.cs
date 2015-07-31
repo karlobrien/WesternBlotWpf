@@ -8,7 +8,6 @@ namespace WesternBlotWpf.Model
 {
     public abstract class AbstractGelCalculation
     {
-        public abstract BlotParts CreateBlotParts(double numGel, double percentGel, double percentArcy);
-
+        public abstract BlotParts CreateBlotParts(IUserInput userInput);
     }
 }

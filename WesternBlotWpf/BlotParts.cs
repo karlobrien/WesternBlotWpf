@@ -7,17 +7,18 @@ using Caliburn.Micro;
 
 namespace WesternBlotWpf
 {
-    public class BlotParts : PropertyChangedBase
+    public class BlotParts : PropertyChangedBase, IBlotParts
     {
         private double _dH20;
         private double _acrylamide;
-        private double _tris1;
-        private double _tris2;
+        private double _tris;
         private double _sds;
         private double _aps;
         private double _temed;
         private double _totalVolume;
 
+        public string GelName { get; set; }
+        
         public double Dh20
         {
             get
@@ -45,29 +46,14 @@ namespace WesternBlotWpf
             }
         }
 
-        public double Tris2
+        public double Tris
         {
-            get { return _tris2; }
+            get { return _tris; }
             set
             {
-                if (Math.Abs(_tris2 - value) < 0)
+                if (Math.Abs(_tris - value) < 0)
                     return;
-                _tris2 = value;
-                NotifyOfPropertyChange();
-            }
-        }
-
-        public double Tris1
-        {
-            get
-            {
-                return _tris1;
-            }
-            set
-            {
-                if (Math.Abs(_tris1 - value) < 0)
-                    return;
-                _tris1 = value;
+                _tris = value;
                 NotifyOfPropertyChange();
             }
         }

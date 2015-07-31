@@ -40,8 +40,17 @@
     <Reference Include="Caliburn.Micro.Platform">
       <HintPath>..\packages\Caliburn.Micro.2.0.2\lib\net45\Caliburn.Micro.Platform.dll</HintPath>
     </Reference>
+    <Reference Include="Dragablz">
+      <HintPath>..\packages\Dragablz.0.0.2.115\lib\net45\Dragablz.dll</HintPath>
+    </Reference>
     <Reference Include="MahApps.Metro">
       <HintPath>..\packages\MahApps.Metro.1.1.2.0\lib\net45\MahApps.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors">
+      <HintPath>..\packages\MaterialDesignColors.0.0.0.0\lib\net45\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf">
+      <HintPath>..\packages\MaterialDesignThemes.0.0.0.78\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -67,15 +76,23 @@
     </ApplicationDefinition>
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="BlotParts.cs" />
+    <Compile Include="IBlotParts.cs" />
     <Compile Include="IShell.cs" />
+    <Compile Include="IUserInput.cs" />
     <Compile Include="Model\AbstractGelCalculation.cs" />
-    <Compile Include="Model\CalculateModel.cs" />
+    <Compile Include="Model\SeparationGelCalculate.cs" />
+    <Compile Include="Model\CalculationFactory.cs" />
     <Compile Include="SeparationGelCalculation.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="UserInput.cs" />
+    <Compile Include="ViewModels\CardViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="Views\CardView.xaml.cs">
+      <DependentUpon>CardView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\WesternBlotView.xaml.cs">
       <DependentUpon>WesternBlotView.xaml</DependentUpon>
     </Compile>
@@ -83,6 +100,10 @@
     <Page Include="Resources\Icons.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ShellView.xaml">
       <Generator>MSBuild:Compile</Generator>

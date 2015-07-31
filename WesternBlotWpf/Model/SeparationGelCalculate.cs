@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace WesternBlotWpf.Model
 {
-    public class CalculateModel
+    public class SeparationGelCalculate : AbstractGelCalculation
     {
         private BlotParts _blotParts;
 
-        public BlotParts CreateBlotParts(double numGel, double percentGel, double percentArcy)
+        public override BlotParts CreateBlotParts(IUserInput userInput)
         {
             _blotParts = new BlotParts();
-            _blotParts.Acrylamide = CalculateAcryLamide(numGel, percentGel, percentArcy);
-            _blotParts.Dh20 = CalculateDdH20(numGel);
-            _blotParts.Tris1 = CalculateTris1(numGel);
-            _blotParts.Sds = CalculateSds(numGel);
-            _blotParts.Aps = CalculateAps(numGel);
-            _blotParts.Temd = CalculateTemd(numGel);
-            _blotParts.TotalVolume = CalculateTotalVolume(numGel);
+            _blotParts.Acrylamide = CalculateAcryLamide(userInput.numGel, userInput.percentGel, userInput.percentArcy);
+            _blotParts.Dh20 = CalculateDdH20(userInput.numGel);
+            _blotParts.Tris = CalculateTris1(userInput.numGel);
+            _blotParts.Sds = CalculateSds(userInput.numGel);
+            _blotParts.Aps = CalculateAps(userInput.numGel);
+            _blotParts.Temd = CalculateTemd(userInput.numGel);
+            _blotParts.TotalVolume = CalculateTotalVolume(userInput.numGel);
 
             return _blotParts;
         }
@@ -28,7 +28,7 @@ namespace WesternBlotWpf.Model
         {
             double result;
 
-            if (Math.Abs(percentArcy - 40) < 0)
+            if (Math.Abs(percentArcy - 40) == 0)
             {
                 result = (0.25 * percentGel) * numGel;
             }
@@ -74,7 +74,7 @@ namespace WesternBlotWpf.Model
 
         private double CalculateTotalVolume(double numGel)
         {
-            var result = _blotParts.Dh20 + _blotParts.Acrylamide + _blotParts.Tris1 + (0.155 * numGel);
+            var result = _blotParts.Dh20 + _blotParts.Acrylamide + _blotParts.Tris + (0.155 * numGel);
             return result;
         }
 
