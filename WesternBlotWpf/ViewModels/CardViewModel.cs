@@ -11,12 +11,16 @@ namespace WesternBlotWpf.ViewModels
 {
     public class CardViewModel : Screen
     {
+        private CalculationFactory _calculationFactory;
+
         public CardViewModel()
         {
-            BlotParts separationResults = new BlotParts { GelName="Separation Gel" };
-            BlotParts stackResults = new BlotParts { GelName = "Stacking Gel" };
+            _calculationFactory = new CalculationFactory();
 
-            BlotResults = new ObservableCollection<BlotParts>();
+            IBlotParts separationResults = new BlotParts { GelName="Separation Gel" };
+            IBlotParts stackResults = new BlotParts { GelName = "Stacking Gel" };
+
+            BlotResults = new ObservableCollection<IBlotParts>();
             BlotResults.Add(separationResults);
             BlotResults.Add(stackResults);
         }
@@ -31,6 +35,7 @@ namespace WesternBlotWpf.ViewModels
                     return;
                 _gelNumber = value;
                 NotifyOfPropertyChange();
+                NotifyOfPropertyChange(() => CanCalculateWesternBlot);
             }
         }
 
@@ -44,6 +49,7 @@ namespace WesternBlotWpf.ViewModels
                     return;
                 _gelPercent = value;
                 NotifyOfPropertyChange();
+                NotifyOfPropertyChange(() => CanCalculateWesternBlot);
             }
         }
 
@@ -63,11 +69,12 @@ namespace WesternBlotWpf.ViewModels
             {
                 _selectedArcyPercent = value;
                 NotifyOfPropertyChange();
+                NotifyOfPropertyChange(() => CanCalculateWesternBlot);
             }
         }
 
-        private ObservableCollection<BlotParts> _blotParts;
-        public ObservableCollection<BlotParts> BlotResults
+        private ObservableCollection<IBlotParts> _blotParts;
+        public ObservableCollection<IBlotParts> BlotResults
         {
             get { return _blotParts; }
             set
@@ -81,13 +88,20 @@ namespace WesternBlotWpf.ViewModels
 
         public void CalculateWesternBlot()
         {
-            Console.WriteLine(SelectedArcyPercent);
-            SeparationGelCalculate model = new SeparationGelCalculate();
-            UserInput userInput = new UserInput(GelNumber, GelPercent, SelectedArcyPercent);
+            IUserInput userInput = new UserInput(GelNumber, GelPercent, SelectedArcyPercent);
 
-            BlotResults[0] = model.CreateBlotParts(userInput);
+            var blotForSeparation = _calculationFactory.CreateFormula("Separation", userInput);
+            var blotForStacking = _calculationFactory.CreateFormula("Stacking", userInput);
+            BlotResults[0] = blotForSeparation;
+            BlotResults[1] = blotForStacking;
+        }
 
-            var result = model.CreateBlotParts(userInput);
+        public bool CanCalculateWesternBlot
+        {
+            get
+            {
+                return ((GelNumber > 0) && (GelPercent > 0) && (SelectedArcyPercent > 0));
+            }
         }
     }
 }

@@ -10,16 +10,19 @@ namespace WesternBlotWpf.Model
     {
         public IBlotParts CreateFormula(string gelType, IUserInput userInput)
         {
+            AbstractGelCalculation gelCalc;
             switch (gelType)
             {
                 case "Stacking":
-                    return new BlotParts();
+                    gelCalc = new StackingGelCalculate();
+                    break;
                 case "Separation":
-                    var separationGel = new SeparationGelCalculate();
-                    return separationGel.CreateBlotParts(userInput);
+                    gelCalc = new SeparationGelCalculate();
+                    break;
                 default:
                     throw new Exception("No implementation of this type");
             }
+            return gelCalc.CreateBlotParts(userInput);
         }
     }
 }

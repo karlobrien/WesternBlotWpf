@@ -2,8 +2,9 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-                      GlowBrush="{DynamicResource AccentColorBrush}" 
-                      Width="354.175" Title="{Binding ActiveItem.DisplayName}" Height="377.244">
+                      GlowBrush="{DynamicResource AccentColorBrush}"
+                      MinWidth="500" MinHeight="500"
+                      Title="{Binding ActiveItem.DisplayName}">
     <DockPanel LastChildFill="True">
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem >

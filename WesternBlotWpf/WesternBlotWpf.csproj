@@ -82,6 +82,7 @@
     <Compile Include="Model\AbstractGelCalculation.cs" />
     <Compile Include="Model\SeparationGelCalculate.cs" />
     <Compile Include="Model\CalculationFactory.cs" />
+    <Compile Include="Model\StackingGelCalculate.cs" />
     <Compile Include="SeparationGelCalculation.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
